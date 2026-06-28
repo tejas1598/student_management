@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Student
-{
+public class Student {
+
     @Id
     @SequenceGenerator(
             name = "studentSeqGen",
@@ -19,15 +19,19 @@ public class Student
             generator = "studentSeqGen"
     )
     private int studentId;
+
     private String studentName;
+
     private int studentAge;
-    @OneToMany
+
+    @OneToMany(mappedBy = "student")
     private List<Phone> phones = new ArrayList<>();
-    @OneToMany
+
+    @OneToMany(mappedBy = "student")
     private List<Enrollment> enrollments = new ArrayList<>();
 
-    public Student()
-    {}
+    public Student() {
+    }
 
     public int getStudentId() {
         return studentId;
@@ -37,20 +41,20 @@ public class Student
         this.studentId = studentId;
     }
 
-    public String getStudent_name() {
+    public String getStudentName() {
         return studentName;
     }
 
-    public void setStudent_name(String student_name) {
-        this.studentName = student_name;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    public int getStudent_age() {
+    public int getStudentAge() {
         return studentAge;
     }
 
-    public void setStudent_age(int student_age) {
-        this.studentAge = student_age;
+    public void setStudentAge(int studentAge) {
+        this.studentAge = studentAge;
     }
 
     public List<Phone> getPhones() {
@@ -73,10 +77,8 @@ public class Student
     public String toString() {
         return "Student{" +
                 "studentId=" + studentId +
-                ", student_name='" + studentName + '\'' +
-                ", student_age=" + studentAge +
-                ", phones=" + phones +
-                ", enrollments=" + enrollments +
+                ", studentName='" + studentName + '\'' +
+                ", studentAge=" + studentAge +
                 '}';
     }
 }

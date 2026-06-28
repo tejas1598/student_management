@@ -1,20 +1,30 @@
 package com.student;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Course
-{
+public class Course {
+
     @Id
+    @SequenceGenerator(
+            name = "courseSeqGen",
+            sequenceName = "courseSeq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "courseSeqGen"
+    )
     private int courseId;
+
     private String courseName;
+
     private int duration;
-    @OneToMany
-    private List<Enrollment> enrollments;
+
+    @OneToMany(mappedBy = "course")
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     public int getCourseId() {
         return courseId;
@@ -54,7 +64,6 @@ public class Course
                 "courseId=" + courseId +
                 ", courseName='" + courseName + '\'' +
                 ", duration=" + duration +
-                ", enrollments=" + enrollments +
                 '}';
     }
 }

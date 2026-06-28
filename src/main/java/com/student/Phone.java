@@ -1,16 +1,26 @@
 package com.student;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
-public class Phone
-{
+public class Phone {
+
     @Id
+    @SequenceGenerator(
+            name = "phoneSeqGen",
+            sequenceName = "phoneSeq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "phoneSeqGen"
+    )
     private int phoneId;
+
     private String phoneNumber;
+
     @ManyToOne
+    @JoinColumn(name = "student_id")
     private Student student;
 
     public int getPhoneId() {
@@ -42,7 +52,6 @@ public class Phone
         return "Phone{" +
                 "phoneId=" + phoneId +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", student=" + student +
                 '}';
     }
 }

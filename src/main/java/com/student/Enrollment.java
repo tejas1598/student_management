@@ -2,11 +2,9 @@ package com.student;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
-public class Enrollment
-{
+public class Enrollment {
+
     @Id
     @SequenceGenerator(
             name = "enrollmentSeqGen",
@@ -14,15 +12,20 @@ public class Enrollment
             allocationSize = 1
     )
     @GeneratedValue(
-          strategy = GenerationType.SEQUENCE,
-          generator = "enrollmentSeqGen"
+            strategy = GenerationType.SEQUENCE,
+            generator = "enrollmentSeqGen"
     )
     private int enrollmentId;
+
     @ManyToOne
+    @JoinColumn(name = "student_id")
     private Student student;
+
     @ManyToOne
+    @JoinColumn(name = "course_id")
     private Course course;
-    List<Enrollment> enrollments;
+
+    private int coursePeriod;
 
     public int getEnrollmentId() {
         return enrollmentId;
@@ -48,11 +51,11 @@ public class Enrollment
         this.course = course;
     }
 
-    public List<Enrollment> getEnrollments() {
-        return enrollments;
+    public int getCoursePeriod() {
+        return coursePeriod;
     }
 
-    public void setEnrollments(List<Enrollment> enrollments) {
-        this.enrollments = enrollments;
+    public void setCoursePeriod(int coursePeriod) {
+        this.coursePeriod = coursePeriod;
     }
 }
