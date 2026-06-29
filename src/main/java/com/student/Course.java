@@ -58,6 +58,12 @@ public class Course {
         this.enrollments = enrollments;
     }
 
+    public void addEnrollment(Enrollment enrollment)
+    {
+        getEnrollments().add(enrollment);
+        enrollment.setCourse(this);
+    }
+
     @Override
     public String toString() {
         return "Course{" +

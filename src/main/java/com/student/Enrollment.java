@@ -58,4 +58,14 @@ public class Enrollment {
     public void setCoursePeriod(int coursePeriod) {
         this.coursePeriod = coursePeriod;
     }
+
+    @Override
+    public String toString() {
+        return "Enrollment{" +
+                "enrollmentId=" + enrollmentId +
+                ", student=" + student.getStudentId() +
+                ", course=" + course.getCourseId() +
+                ", coursePeriod=" + coursePeriod +
+                '}';
+    }
 }

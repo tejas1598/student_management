@@ -7,7 +7,6 @@ import java.util.List;
 
 @Entity
 public class Student {
-
     @Id
     @SequenceGenerator(
             name = "studentSeqGen",
@@ -73,12 +72,26 @@ public class Student {
         this.enrollments = enrollments;
     }
 
+    public void addPhone(Phone phone)
+    {
+        phones.add(phone);
+        phone.setStudent(this);
+    }
+
+    public void addEnrollment(Enrollment enrollment)
+    {
+        getEnrollments().add(enrollment);
+        enrollment.setStudent(this);
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "studentId=" + studentId +
                 ", studentName='" + studentName + '\'' +
                 ", studentAge=" + studentAge +
+                ", phones=" + phones.size() +
+                ", enrollments=" + enrollments.size()+
                 '}';
     }
 }

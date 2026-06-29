@@ -9,6 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+//        Student s1 = new Student();
+//
+//        Course c1 = new Course();
+
         Configuration config = new Configuration();
         config.configure("hibernate.cfg.xml");
 
@@ -23,6 +27,8 @@ public class Main {
         Session session = factory.openSession();
 
         Transaction tx = session.beginTransaction();
+
+
 
         tx.commit();
 
