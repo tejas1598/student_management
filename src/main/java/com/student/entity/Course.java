@@ -1,4 +1,4 @@
-package com.student;
+package com.student.entity;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -23,15 +23,11 @@ public class Course {
 
     private int duration;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course",cascade = CascadeType.PERSIST)
     private List<Enrollment> enrollments = new ArrayList<>();
 
     public int getCourseId() {
         return courseId;
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
     }
 
     public String getCourseName() {

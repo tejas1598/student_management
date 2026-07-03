@@ -1,4 +1,4 @@
-package com.student;
+package com.student.entity;
 
 import jakarta.persistence.*;
 
@@ -23,10 +23,10 @@ public class Student {
 
     private int studentAge;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Phone> phones = new ArrayList<>();
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<Enrollment> enrollments = new ArrayList<>();
 
     public Student() {

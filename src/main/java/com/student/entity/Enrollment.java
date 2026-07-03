@@ -1,4 +1,4 @@
-package com.student;
+package com.student.entity;
 
 import jakarta.persistence.*;
 
@@ -12,7 +12,7 @@ public class Enrollment {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+                strategy = GenerationType.SEQUENCE,
             generator = "enrollmentSeqGen"
     )
     private int enrollmentId;
@@ -29,10 +29,6 @@ public class Enrollment {
 
     public int getEnrollmentId() {
         return enrollmentId;
-    }
-
-    public void setEnrollmentId(int enrollmentId) {
-        this.enrollmentId = enrollmentId;
     }
 
     public Student getStudent() {
