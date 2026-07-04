@@ -7,12 +7,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
-public class Main {
-
-    public static void main(String[] args) {
-
-        HibernateUtil hu = new HibernateUtil();
-
+public class Main
+{
+    public static void main(String[] args)
+    {
 //        Student s1 = new Student();
 //        s1.setStudentName("Tejas");
 //        s1.setStudentAge(20);
@@ -53,12 +51,10 @@ public class Main {
 //        System.out.println();
 //        System.out.println(student1);
 
+        HibernateUtil hu = new HibernateUtil();
+
         StudentRepository studentRepository = new StudentRepository();
 
         Session session = hu.getSessionFactory().openSession();
-
-        Student student = studentRepository.findById(session,1);
-        System.out.println(studentRepository.findAll(session));
-//        System.out.println(student);
     }
 }
